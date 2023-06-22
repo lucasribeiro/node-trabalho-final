@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'nodeapiaparelhos'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_378574F7D0474583B3D304D093E6F2C4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E5C57DA4EB4E466CBEAA415991741E07 }}
           package: .
