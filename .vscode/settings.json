@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/c1ae5c7b-c00e-464b-a867-b65acc2efb38/resourceGroups/PUCMinas/providers/Microsoft.Web/sites/node-trabalhofinal-api",
+    "appService.deploySubpath": "."
+}
