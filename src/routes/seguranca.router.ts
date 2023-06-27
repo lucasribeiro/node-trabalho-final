@@ -1,6 +1,8 @@
 import { Router } from 'express';
-import { compare, compareSync, hash } from 'bcryptjs';
+import { compareSync, hash } from 'bcryptjs';
 import AppError from '../errors/AppError';
+import authConfig from '../config/auth';
+import { sign } from 'jsonwebtoken';
 
 const knex = require('knex')(require('../../knexfile.js').development);
 
@@ -50,8 +52,18 @@ segurancaRouter.post('/login', async (request, response) => {
             throw new AppError('Email/Senha inválidos.', 401);
           }
           else {
-            response.status(200).json(usuario);
-          }         
+            
+            const {secret, expiresIn} = authConfig.jwt;
+
+            const token = sign({}, secret ,  {
+               subject: usuario.email,
+               expiresIn: expiresIn,
+           });
+
+           delete usuario.senha;     
+           
+           response.status(200).json({usuario, token});
+        }; 
        }
        else
        {

@@ -1,7 +1,10 @@
 import { Router } from 'express';
+import ensureAuthenticated from '../middleware/ensureAuthentication';
 const knex = require('knex')(require('../../knexfile.js').development);
 
 const aparelhosRouter = Router();
+
+aparelhosRouter.use(ensureAuthenticated);
 
 // Cria um manipulador da rota padrão
 aparelhosRouter.get('/:id', async (request, response) => {
